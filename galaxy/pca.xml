@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> </description>
-    <command interpreter="Rscript">
+    <command>
         PCA.R --input=$input --output=$output --outdir=$output.files_path --scale=$scale --pcs=$pcs
         
         #if $group_choice.group == "Y":

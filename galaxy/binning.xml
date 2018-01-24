@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> (Bucketing) </description>
-    <command interpreter="Rscript">
+    <command>
             BinSpectra.R --input=$input --output=$output --pattern=$pattern
     </command>
 

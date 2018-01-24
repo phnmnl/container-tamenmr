@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> spectra</description>
-    <command interpreter="Rscript">
+    <command>
         #if $method_choice.method == "remove"
             norm_data.R --input1=$input --output=$output --action=$method_choice.method --colName=$method_choice.param
         #else if $method_choice.method == "add"

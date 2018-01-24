@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> of spectra</description>
-    <command interpreter="Rscript">
+    <command>
         Align.R --inData=$input --inPeaks=$peaks --output=$output
     </command>
 

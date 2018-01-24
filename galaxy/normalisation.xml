@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description></description>
-    <command interpreter="Rscript">
+    <command>
         #if $method_choice.method == "refPeak"
             Normalise.R --input=$input --output=$output --type=$method_choice.method --param=$method_choice.param
         #else

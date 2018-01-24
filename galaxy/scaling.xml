@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> </description>
-    <command interpreter="Rscript">
+    <command>
         Scaling.R --input=$input --output=$output --method=$method <!--meanCnt=$meanCnt/-->
     </command>
 

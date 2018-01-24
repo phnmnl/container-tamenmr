@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> significant bins </description>
-    <command interpreter="Rscript">
+    <command>
         PlotNMRSig.R --input=$input --output=$output --outDir=$output.files_path --ppmInt=$ppmInt --bins=$binFile --pvals=$pvalFile --colourbar=$cbar
     </command>
 
