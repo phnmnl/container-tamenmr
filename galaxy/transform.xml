@@ -1,5 +1,7 @@
-
-<tool id="transform" name="Transform" version="0.0.1">
+<tool id="transform" name="Transform" version="0.0.2">
+    <requirements>
+        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
+    </requirements>
     <description> data </description>
     <command interpreter="Rscript">
         transform.R --input=$input --output=$output --method=$method

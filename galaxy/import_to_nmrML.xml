@@ -1,5 +1,7 @@
-
-<tool id="import_to_nmrML" name="Convert" version="0.0.1">
+<tool id="import_to_nmrML" name="Convert" version="0.0.2">
+    <requirements>
+        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
+    </requirements>
     <description> NMR data to nmrML</description>
     <command interpreter="python">
         import2nmrML.py $input $output $proc

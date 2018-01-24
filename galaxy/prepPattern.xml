@@ -1,4 +1,7 @@
-<tool id="prepPattern" name="Prepare" version="0.0.1">
+<tool id="prepPattern" name="Prepare" version="0.0.2">
+    <requirements>
+        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
+    </requirements>
     <description> pattern file </description>
     <command interpreter="Rscript">
         #if $method_choice.method == "uniform"

@@ -1,5 +1,7 @@
-
-<tool id="identify" name="Identify" version="0.0.1">
+<tool id="identify" name="Identify" version="0.0.2">
+    <requirements>
+        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
+    </requirements>
     <description> metabolites in the data </description>
     <command interpreter="python">
         importTest.py $input $output

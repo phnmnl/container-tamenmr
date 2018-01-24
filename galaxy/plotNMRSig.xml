@@ -1,5 +1,7 @@
-
-<tool id="plotnmrsig" name="Plot NMR" version="1.0.1">
+<tool id="plotnmrsig" name="Plot NMR" version="1.0.2">
+    <requirements>
+        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
+    </requirements>
     <description> significant bins </description>
     <command interpreter="Rscript">
         PlotNMRSig.R --input=$input --output=$output --outDir=$output.files_path --ppmInt=$ppmInt --bins=$binFile --pvals=$pvalFile --colourbar=$cbar

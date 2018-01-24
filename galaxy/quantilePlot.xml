@@ -1,5 +1,7 @@
-
-<tool id="quantilePlot" name="Quantile plot" version="1.0.1">
+<tool id="quantilePlot" name="Quantile plot" version="1.0.2">
+    <requirements>
+        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
+    </requirements>
     <description> </description>
     <command interpreter="Rscript">
         QuantilePlot.R --input=$input --output=$output --outDir=$output.files_path --ppmInt=$ppmInt --pltMean=$pltMean
