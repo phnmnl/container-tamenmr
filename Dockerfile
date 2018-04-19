@@ -4,7 +4,7 @@ MAINTAINER PhenoMeNal-H2020 Project (phenomenal-h2020-users@googlegroups.com)
 
 LABEL software="tamenmr"
 LABEL software.version="1.0"
-LABEL version="0.2"
+LABEL version="0.3"
 LABEL Description="tameNMR: Tools for Analysis of MEtabolomic NMR"
 LABEL website="https://github.com/PGB-LIV/tameNMR"
 LABEL documentation="https://github.com/PGB-LIV/tameNMR"
