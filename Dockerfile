@@ -19,7 +19,7 @@ RUN apt-get -y update && apt-get -y --no-install-recommends install ca-certifica
 # Install tameNMR
 WORKDIR /usr/src
 RUN git clone https://github.com/PGB-LIV/tameNMR
-RUN for i in $(find tameNMR/tameNMR -name *.R); do install -m755 $i /usr/local/bin; done
+RUN for i in $(find tameNMR/tameNMR -name *.R -or -name *.py); do install -m755 $i /usr/local/bin; done
 
 # Cleanup 
 RUN apt-get -y --purge --auto-remove remove make gcc gfortran g++ && apt-get -y --purge remove libcurl4-gnutls-dev libcairo2-dev libxt-dev libxml2-dev libv8-dev libnlopt-dev && \
