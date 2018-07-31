@@ -19,7 +19,10 @@ RUN apt-get -y update && apt-get -y --no-install-recommends install ca-certifica
 # Install tameNMR
 WORKDIR /usr/src
 RUN git clone https://github.com/PGB-LIV/tameNMR
-RUN for i in $(find tameNMR/tameNMR -name *.R -or -name *.py); do install -m755 $i /usr/local/bin; done
+RUN for i in $(find tameNMR/tameNMR -name *.R -or -name *py); do install -m755 $i /usr/local/bin; done
+# add shebang to python scripts
+# otherwise will be executed as bash scripts (not good for some xml wrappers)
+RUN for i in $(find /usr/local/bin -name *py); do sed -i '1i#!/usr/bin/env python' $i; done
 
 # Cleanup 
 RUN apt-get -y --purge --auto-remove remove make gcc gfortran g++ && apt-get -y --purge remove libcurl4-gnutls-dev libcairo2-dev libxt-dev libxml2-dev libv8-dev libnlopt-dev && \
