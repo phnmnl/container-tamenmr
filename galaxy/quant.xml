@@ -3,7 +3,7 @@
         <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/tamenmr</container>
     </requirements>
     <description> the metabolites </description>
-    <command interpreter="python">
+    <command>
         importTest.py $input $output
     </command>
 
