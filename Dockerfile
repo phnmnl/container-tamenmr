@@ -14,7 +14,7 @@ LABEL tags="Metabolomics"
 # Install packages for compilation
 RUN apt-get -y update && apt-get -y --no-install-recommends install ca-certificates wget zip unzip git libcurl4-gnutls-dev libcairo2-dev libxt-dev libxml2-dev libv8-dev libnlopt-dev libnlopt0 gdebi-core pandoc pandoc-citeproc software-properties-common make gcc gfortran g++ r-recommended r-cran-rcurl r-cran-foreach r-cran-multicore r-cran-base64enc r-cran-qtl r-cran-xml libgsl2 libgsl0-dev gsl-bin libssl-dev python python-dev python-setuptools build-essential python-pip && \
     pip install numpy scipy pandas matplotlib nmrglue && \
-    R -e "install.packages(c('ggplot2','ellipse','markdown','viridis'), repos='https://mirrors.ebi.ac.uk/CRAN/')"
+    R -e "install.packages(c('rlang', 'ggplot2','ellipse','markdown','viridis'))"
 
 # Install tameNMR
 WORKDIR /usr/src
