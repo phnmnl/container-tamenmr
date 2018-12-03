@@ -4,7 +4,7 @@ MAINTAINER PhenoMeNal-H2020 Project (phenomenal-h2020-users@googlegroups.com)
 
 LABEL software="tamenmr"
 LABEL software.version="1.0"
-LABEL version="0.5"
+LABEL version="0.6"
 LABEL Description="tameNMR: Tools for Analysis of MEtabolomic NMR"
 LABEL website="https://github.com/PGB-LIV/tameNMR"
 LABEL documentation="https://github.com/PGB-LIV/tameNMR"
@@ -18,10 +18,10 @@ RUN apt-get -y update && apt-get -y --no-install-recommends install ca-certifica
 
 # Install tameNMR
 WORKDIR /usr/src
-RUN git clone https://github.com/PGB-LIV/tameNMR
+RUN git clone https://github.com/PGB-LIV/tameNMR-PhenoMeNal
 RUN for i in $(find tameNMR/tameNMR -name *.R); do install -m755 $i /usr/local/bin; done
 
-# Cleanup 
+# Cleanup
 RUN apt-get -y --purge --auto-remove remove make gcc gfortran g++ && apt-get -y --purge remove libcurl4-gnutls-dev libcairo2-dev libxt-dev libxml2-dev libv8-dev libnlopt-dev && \
     apt-get -y clean && apt-get -y autoremove && rm -rf /var/lib/{cache,log}/ /usr/src/rnmr1d /tmp/* /var/tmp/*
 
