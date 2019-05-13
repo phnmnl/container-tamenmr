@@ -11,23 +11,64 @@ LABEL documentation="https://github.com/PGB-LIV/tameNMR"
 LABEL license="https://github.com/phnmnl/container-tamenmr/blob/master/License.txt"
 LABEL tags="Metabolomics"
 
+ARG git_branch="master"
+
 # Install packages for compilation
-RUN apt-get -y update && apt-get -y --no-install-recommends install ca-certificates wget zip unzip git libcurl4-gnutls-dev libcairo2-dev libxt-dev libxml2-dev libv8-dev libnlopt-dev libnlopt0 gdebi-core pandoc pandoc-citeproc software-properties-common make gcc gfortran g++ r-recommended r-cran-rcurl r-cran-foreach r-cran-multicore r-cran-base64enc r-cran-qtl r-cran-xml libgsl2 libgsl0-dev gsl-bin libssl-dev python python3 python-dev python-setuptools build-essential python-pip && \
-    pip install numpy scipy pandas nmrglue && \
-    R -e "install.packages(c('ggplot2','ellipse','markdown','knitr','viridis','ggrepel','caret','pls'), repos='https://cran.ma.imperial.ac.uk/')"
+RUN \
+    apt-get update --quiet -y \
+ && apt-get install --quiet -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        gcc \
+        gdebi-core \
+        gfortran \
+        g++ \
+        gsl-bin \
+        libcairo2-dev \
+        libcurl4-gnutls-dev \
+        libgsl0-dev \
+        libgsl2 \
+        libnlopt0 \
+        libnlopt-dev \
+        libssl-dev \
+        libv8-dev \
+        libxml2-dev \
+        libxt-dev \
+        make \
+        pandoc \
+        pandoc-citeproc \
+        r-cran-base64enc \
+        r-cran-caret \
+        r-cran-foreach \
+        r-cran-ggplot2 \
+        r-cran-multicore \
+        r-cran-qtl \
+        r-cran-rcurl \
+        r-cran-xml \
+        r-recommended \
+        software-properties-common \
+        unzip \
+        wget \
+        zip \
+ && R -e "install.packages(c('ellipse', 'markdown', 'knitr', 'viridis','ggrepel','pls'), repos='https://cran.ma.imperial.ac.uk/')" \
+ && cd /tmp \
+ && git clone --depth 1 --single-branch --branch ${git_branch} https://github.com/PGB-LIV/tameNMR-PhenoMeNal tameNMR-PhenoMeNal \
+ && apt-get --quiet -y --purge --auto-remove remove \
+        build-essential \
+        gcc \
+        git \
+        g++ \
+        *-dev \
+        gfortran \
+        make \
+        pandoc \
+        pandoc-citeproc \
+ && apt-get -y clean && rm -rf /var/lib/{cache,log}/ /usr/src/rnmr1d /var/tmp/*
 
 # Install tameNMR
-WORKDIR /usr/src
-RUN git clone https://github.com/PGB-LIV/tameNMR-PhenoMeNal
-RUN for i in $(find tameNMR-PhenoMeNal/tameNMR -name *.R); do install -m755 $i /usr/local/bin; done
-
-# Cleanup
-RUN apt-get -y --purge --auto-remove remove make gcc gfortran g++ && apt-get -y --purge remove libcurl4-gnutls-dev libcairo2-dev libxt-dev libxml2-dev libv8-dev libnlopt-dev && \
-    apt-get -y clean && apt-get -y autoremove && rm -rf /var/lib/{cache,log}/ /usr/src/rnmr1d /tmp/* /var/tmp/*
-
-# Add scripts to container
-#ADD scripts/* /usr/local/bin/
-#RUN chmod +x /usr/local/bin/*
+RUN \
+    cd /tmp \
+ && find tameNMR-PhenoMeNal/tameNMR -name '*.R' -exec install -m755 {} /usr/local/bin \;
 
 # Add testing to container
 ADD runTest1.sh /usr/local/bin/runTest1.sh
